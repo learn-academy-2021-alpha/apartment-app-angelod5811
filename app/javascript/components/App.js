@@ -1,6 +1,23 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Home from './pages/Home'
+import AddApartments from './pages/AddApartments'
+import mockApartments from './MockApartments'
+import {
+  BrowserRouter as  Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      apartments: mockApartments
+    }
+  }
   render() {
     const {
       logged_in,
@@ -9,8 +26,11 @@ class App extends React.Component {
       sign_in_route,
       sign_out_route
     } = this.props
+    console.log(this.state.apartments);
+
     return (
-      <React.Fragment>
+      <>
+      <Header/>
         { logged_in &&
           <div>
             <a href={sign_out_route }>Sign Out</a>
@@ -21,7 +41,12 @@ class App extends React.Component {
             <a href={ sign_in_route }>Sign In</a>
           </div>
         }
-      </React.Fragment>
+        <Router>
+          <Switch>
+            <Route exact path="/" render={ () => <Home apartments = {this.state.apartments}/> } />
+        </Switch>
+      </Router>
+      </>
     )
   }
 }
