@@ -20,6 +20,28 @@ class App extends React.Component {
     }
   }
 
+  createNewApt = (newapt) =>{
+    fetch("http://localhost:3000/apartments", {
+      body: JSON.stringify(newapt),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method:"POST"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("something went wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(payload => {
+      this.apartmentIndex()
+    })
+    .catch(erros => {
+      console.log("create errors:", errors)
+    })
+  }
+
 
 
   render() {
@@ -47,9 +69,16 @@ class App extends React.Component {
         }
         <Router>
           <Switch>
+            <Route path="apartmentshow/:id" render={(props) => {
+              const id = +props.match.params.id
+              const foundapt = this.state.apartments.find(apt => apt.id === id)
+              console.log(id);
+              return <ApartmentShow apt={ foundapt } />
+            }}
+            />
             <Route exact path="/" render={ () => <Home apartments = {this.state.apartments}/> } />
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
 
       </>
     )

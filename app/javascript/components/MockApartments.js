@@ -1,5 +1,6 @@
 let apartments = [
-  { id: 1,
+  {
+    id: 1,
     street:"corona",
     city:"corona",
     state:"CA",
@@ -8,7 +9,9 @@ let apartments = [
     price:"234234",
     bedrooms:4,
     bathrooms:3,
-    pets:"yes" }, {
+    pets:"yes"
+  },
+  {
     id:2,
     street:"hermosa",
     city:"Los Angeles",
@@ -19,6 +22,6 @@ let apartments = [
     bedrooms:5,
     bathrooms:6,
     pets:"no"
-    }
+  }
 ]
 export default apartments
