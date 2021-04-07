@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Home from './pages/Home'
+import ApartmentShow from './pages/ApartmentShow'
 import AddApartments from './pages/AddApartments'
 import mockApartments from './MockApartments'
 import {
@@ -18,6 +19,9 @@ class App extends React.Component {
       apartments: mockApartments
     }
   }
+
+
+
   render() {
     const {
       logged_in,
@@ -26,7 +30,7 @@ class App extends React.Component {
       sign_in_route,
       sign_out_route
     } = this.props
-    console.log(this.state.apartments);
+
 
     return (
       <>
@@ -46,6 +50,7 @@ class App extends React.Component {
             <Route exact path="/" render={ () => <Home apartments = {this.state.apartments}/> } />
         </Switch>
       </Router>
+
       </>
     )
   }
