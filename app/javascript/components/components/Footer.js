@@ -5,7 +5,7 @@ class Footer extends Component {
     return (
       <>
       <div>
-      <h2>Footer section</h2>
+      <h4>Copyright by Angelo DiMarco</h4>
       </div>
       </>
     )

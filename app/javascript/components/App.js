@@ -7,6 +7,7 @@ import ApartmentShow from './pages/ApartmentShow'
 import AddApartments from './pages/AddApartments'
 import mockApartments from './MockApartments'
 import NotFound from './pages/NotFound'
+import ApartmentEdit from './pages/ApartmentEdit'
 // import App from './App.css'
 
 import {
@@ -37,6 +38,7 @@ class App extends React.Component {
       method:"POST"
     })
     .then(response => {
+      console.log(response);
       if(response.status === 422){
         alert("something went wrong with your submission.")
       }
@@ -45,7 +47,7 @@ class App extends React.Component {
     .then(payload => {
       this.apartmentIndex()
     })
-    .catch(erros => {
+    .catch(errors => {
       console.log("create errors:", errors)
     })
   }
@@ -73,7 +75,10 @@ class App extends React.Component {
 
           <Route
             path="/addapartments/"
-            render={ (props) => <AddApartments createNewApt={ this.createNewApt } /> }
+            render={ (props) => {
+              return <AddApartments createNewApt=
+              { this.createNewApt } />
+            }}
           />
             <Route path="/apartmentshow/:id" render={(props) => {
               const id = +props.match.params.id

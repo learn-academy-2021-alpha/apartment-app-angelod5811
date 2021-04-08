@@ -1,5 +1,6 @@
 import React from "react"
-import { Form, FormGroup, Label, Input } from 'reactstrap'
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import { Redirect } from "react-router-dom"
 
 class AddApartments extends React.Component {
   constructor(props){
@@ -29,7 +30,7 @@ class AddApartments extends React.Component {
 
 
   handleSubmit = () => {
-    this.props.addApartments(this.state.form)
+    this.props.createNewApt(this.state.form)
     this.setState({ submitted: true })
   }
 
@@ -119,7 +120,13 @@ class AddApartments extends React.Component {
               onChange={ this.handleChange }
             />
           </FormGroup>
+          <Button
+           onClick={ this.handleSubmit }
+         >
+           Add Apartment
+         </Button>
         </Form>
+        { this.state.submitted && <Redirect to="/apartmentshow" /> }
       </>
     )
   }
