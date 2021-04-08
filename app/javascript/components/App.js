@@ -6,6 +6,9 @@ import Home from './pages/Home'
 import ApartmentShow from './pages/ApartmentShow'
 import AddApartments from './pages/AddApartments'
 import mockApartments from './MockApartments'
+import NotFound from './pages/NotFound'
+// import App from './App.css'
+
 import {
   BrowserRouter as  Router,
   Route,
@@ -19,6 +22,11 @@ class App extends React.Component {
       apartments: mockApartments
     }
   }
+
+ //  componentDidMount(){
+ //   this.apartmentIndex()
+ // }
+
 
   createNewApt = (newapt) =>{
     fetch("http://localhost:3000/apartments", {
@@ -56,20 +64,18 @@ class App extends React.Component {
 
     return (
       <>
-      <Header/>
-        { logged_in &&
-          <div>
-            <a href={sign_out_route }>Sign Out</a>
-          </div>
-        }
-        { !logged_in &&
-          <div>
-            <a href={ sign_in_route }>Sign In</a>
-          </div>
-        }
+      <Header
+        logged_in = { logged_in }
+        sign_in_route = { sign_in_route }
+        sign_out_route = { sign_out_route }/>
         <Router>
           <Switch>
-            <Route path="apartmentshow/:id" render={(props) => {
+
+          <Route
+            path="/addapartments/"
+            render={ (props) => <AddApartments createNewApt={ this.createNewApt } /> }
+          />
+            <Route path="/apartmentshow/:id" render={(props) => {
               const id = +props.match.params.id
               const foundapt = this.state.apartments.find(apt => apt.id === id)
               console.log(id);
@@ -77,7 +83,9 @@ class App extends React.Component {
             }}
             />
             <Route exact path="/" render={ () => <Home apartments = {this.state.apartments}/> } />
+            <Route component={ NotFound } />
           </Switch>
+          <Footer />
         </Router>
 
       </>

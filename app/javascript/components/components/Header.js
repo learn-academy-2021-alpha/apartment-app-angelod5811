@@ -9,16 +9,30 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto">reactstrap</NavbarBrand>
+
+        <NavbarBrand href="/" className="mr-auto" >
+        <div className="header">Apartment App
+        </div>
+        </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-              <NavLink href="/apartmentshow">Show Apartments</NavLink>
+              <NavLink href="/">Show All Apartments</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <NavLink href="/AddApartments">Add an Apartment</NavLink>
             </NavItem>
+            { props.logged_in &&
+              <div>
+                <a href={props.sign_out_route }>Sign Out</a>
+              </div>
+            }
+            { !props.logged_in &&
+              <div>
+                <a href={ props.sign_in_route }>Sign In</a>
+              </div>
+            }
           </Nav>
         </Collapse>
       </Navbar>

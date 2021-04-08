@@ -1,7 +1,7 @@
 let apartments = [
   {
     id: 1,
-    street:"corona",
+    street:"221 Corona Street",
     city:"corona",
     state:"CA",
     manager: "bob",
@@ -13,7 +13,7 @@ let apartments = [
   },
   {
     id:2,
-    street:"hermosa",
+    street:"5532 Hermosa Ave",
     city:"Los Angeles",
     state:"CA",
     manager: "Rob",
