@@ -45,7 +45,9 @@ class App extends React.Component {
       return response.json()
     })
     .then(payload => {
-      this.apartmentIndex()
+      console.log("hellooo");
+      // this.apartmentshow()
+      console.log(payload);
     })
     .catch(errors => {
       console.log("create errors:", errors)

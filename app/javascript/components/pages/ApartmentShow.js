@@ -5,7 +5,7 @@ class ApartmentShow extends React.Component {
     console.log(this.props.apt);
     return(
       <>
-      <h3>This is the apartment Show page</h3>
+      <h3 className="aptinfo">More info on apartment</h3>
       <div>
         Street: {this.props.apt.street}
       </div>
